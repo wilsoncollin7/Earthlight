@@ -37,10 +37,11 @@ $(document).ready(function() {
         $("#today").html("")
 
         // create html content for current weather
-        var icon = data.weather.icon
-        
-        var cityName = $("<h2>").text(data.name + " " + "(" + moment().calendar("M, D, YYYY") + ")" + " " + $("<img>").attr("src", "http://openweathermap.org/img/wn/10d@2x.png"))
-        var temp = $("<h5>").text("Temperature: " + (data.main.temp * 1.8 - 459.67).toFixed(2))
+        var icon = data.weather[0].icon
+        var img = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
+        var cityName = $("<h2>").text(data.name + " " + "(" + moment().calendar("M, D, YYYY") + ")" + " ")
+        cityName.append(img)
+        var temp = $("<h5>").text("Temperature: " + (data.main.temp * 1.8 - 459.67).toFixed(2) + " F")
         var humid = $("<h5>").text("Humidity: " + data.main.humidity + "%")
         var windSpeed = $("<h5>").text("Wind Speed: " + data.wind.speed + " MPH")
 
@@ -77,14 +78,14 @@ $(document).ready(function() {
           if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
             // create html elements for a bootstrap card
             time ++
-            var day = $("<div>").addClass("card forecard bg-primary mr-4 p-2").attr("style", "width:10rem; float:left; color:white;")
+            var icon = data.list[i].weather[0].icon
+            var img = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
+            var day = $("<div>").addClass("card forecard bg-primary mr-4 p-2").attr("style", "width:8rem; float:left; color:white;")
             var date = $("<h5>").text(moment().add(time, 'days').calendar("M, D, YYYY"))
-            var icon = data.list[i].weather.icon
-            var iconPic = $("<img>").attr("src", "http://openweathermap.org/img/wn/10d@2x.png")
-            var temp = $("<h5>"). text(((data.list[i].main.temp) * 1.8 - 459.67).toFixed(2));
+            var temp = $("<h5>"). text(((data.list[i].main.temp) * 1.8 - 459.67).toFixed(2) + " F");
             var humid = $("<h5>").text(data.list[i].main.humidity + "%");
             
-            day.append(date, temp, humid);
+            day.append(date, img, temp, humid);
 
             $("#forecast").append(day)
             
@@ -110,7 +111,6 @@ $(document).ready(function() {
 
         if (data.value > 6) {
           $(".btn-sm").addClass("btn-danger")
-          console.log("red")
         } else{
           $(".btn-sm").addClass("btn-primary")
         }
