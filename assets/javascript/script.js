@@ -39,7 +39,7 @@ $(document).ready(function() {
         // create html content for current weather
         var icon = data.weather.icon
         
-        var cityName = $("<h2>").text(data.name + " " + moment().subtract(10, 'days').calendar() + " " + $("<img>").attr("src", "http://openweathermap.org/img/wn/10d@2x.png"))
+        var cityName = $("<h2>").text(data.name + " " + "(" + moment().calendar("M, D, YYYY") + ")" + " " + $("<img>").attr("src", "http://openweathermap.org/img/wn/10d@2x.png"))
         var temp = $("<h5>").text("Temperature: " + (data.main.temp * 1.8 - 459.67).toFixed(2))
         var humid = $("<h5>").text("Humidity: " + data.main.humidity + "%")
         var windSpeed = $("<h5>").text("Wind Speed: " + data.wind.speed + " MPH")
@@ -61,19 +61,33 @@ $(document).ready(function() {
   
   function getForecast(searchValue) {
     $.ajax({
-      type: "",
-      url: "" + searchValue + "",
+      type: "GET",
+      url: "https://api.openweathermap.org/data/2.5/forecast?q=" + searchValue + apiKey,
       dataType: "json",
       success: function(data) {
         // overwrite any existing content with title and empty row
-
+        $("#forecast").html("")
+        var header = $("<h2>").text("5-Day Forecast:")
+        $("#forecast").append(header)
+        var time = 0
         // loop over all forecasts (by 3-hour increments)
         for (var i = 0; i < data.list.length; i++) {
           // only look at forecasts around 3:00pm
+          
           if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
             // create html elements for a bootstrap card
+            time ++
+            var day = $("<div>").addClass("card forecard bg-primary mr-4 p-2").attr("style", "width:10rem; float:left; color:white;")
+            var date = $("<h5>").text(moment().add(time, 'days').calendar("M, D, YYYY"))
+            var icon = data.list[i].weather.icon
+            var iconPic = $("<img>").attr("src", "http://openweathermap.org/img/wn/10d@2x.png")
+            var temp = $("<h5>"). text(((data.list[i].main.temp) * 1.8 - 459.67).toFixed(2));
+            var humid = $("<h5>").text(data.list[i].main.humidity + "%");
             
+            day.append(date, temp, humid);
 
+            $("#forecast").append(day)
+            
             // merge together and put on page
           }
         }
