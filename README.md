@@ -6,4 +6,4 @@ Here is a link to the application: https://wilsoncollin7.github.io/weather-dashb
 
 Here is a snip of the home page of the app:
 
-<img src="assets/dev-docs/homePage.JPG>
+<img src="assets/dev-docs/homePage.JPG">
