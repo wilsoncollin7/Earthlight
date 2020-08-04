@@ -109,7 +109,7 @@ $(document).ready(function() {
         
         $(".today").append(uv.append(btn));
 
-        if (data.value > 6) {
+        if (data.value > 7) {
           $(".btn-sm").addClass("btn-danger")
         } else{
           $(".btn-sm").addClass("btn-primary")
