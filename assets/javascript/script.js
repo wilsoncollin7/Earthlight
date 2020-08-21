@@ -80,8 +80,8 @@ $(document).ready(function() {
             // create html elements for a bootstrap card
             time ++
             var icon = data.list[i].weather[0].icon
-            var img = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
-            var day = $("<div>").addClass("card forecard mr-4 p-2 shadow").attr("style", "width:8rem; float:left; color:white;")
+            var img = $("<img>").addClass("weatherIcon").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
+            var day = $("<div>").addClass("card forecard mr-4 p-2 shadow")
             var date = $("<h5>").text(moment().add(time, 'days').format('l'))
             var temp = $("<h5>"). text(((data.list[i].main.temp) * 1.8 - 459.67).toFixed(2) + " F");
             var humid = $("<h5>").text(data.list[i].main.humidity + "%");

@@ -3,7 +3,8 @@ body {
     font-family: 'Quicksand', sans-serif;
 }
 
-#navbar, #search-button, #dropdownMenuButton, #today, #footerIcon, .hot, .cold {
+#navbar, #search-button, #dropdownMenuButton, #today,
+#footerIcon, .hot, .cold, .forecard, .footer {
     color: white;
 }
 
@@ -32,12 +33,36 @@ body {
     border: 1px solid #BC6C25;
 }
 
+#forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: center
+}
+
+.forecard {
+    width: 8rem; 
+}
+
 .footer {
-    color: white;
     text-align: center;
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px;
     line-height: 60px;
+}
+
+@media screen and (max-width: 760px) {
+    #forecast {
+        flex-direction: column;
+    }
+    .forecard {
+        width: 100%;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    .weatherIcon {
+        width: 80px;
+        margin: auto;
+    }
 }
