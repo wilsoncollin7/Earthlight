@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <header class="container-fluid text-center text-white bg-dark p-2">
+  <header class="container-fluid text-center p-2 shadow" id="navbar">
     <h1>Weather Dashboard</h1>
     <img src="http://openweathermap.org/img/wn/10d@2x.png">
     <img src="http://openweathermap.org/img/wn/01d@2x.png">
@@ -21,39 +21,35 @@
 
   <section class="container-fluid" id="mainContainer">
     <article class="row">
-      <div class="col-lg-4 bg-light"></div>
-      <div class="col-lg-4 bg-light" id="searchHistory">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4" id="searchHistory">
         <h5 class="mt-3">Search for a City:</h5>
-        <div class="form-row" id="form">
+        <div class="form-row d-flex justify-content-center" id="form">
           <div class="col-auto">
             <div class="form form-group" id="searchInput">
-              <input class="form-control" type="text" id="search-value"/>
+              <input class="form-control shadow" type="text" id="search-value"/>
             </div>
           </div>
           <div class="col-auto">
-            <button class="btn btn-primary" id="search-button"> <i class="fa fa-search"></i> </button>
+            <button class="btn shadow" id="search-button"> <i class="fa fa-search"></i> </button>
           </div>
           <div class="col-auto">
-            <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">History</button>
+            <div class="dropright">
+              <button class="btn btn-secondary dropdown-toggle shadow" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">History</button>
               <div class="dropdown-menu history" aria-labelledby="dropdownMenuButton"></div>
             </div>
           </div>
-          <div class="col-auto">
-            <button class="btn btn-primary" id="clearHistory">Clear History</button>
-          </div>
         </div>
       </div>
-      <div class="col-lg-4 bg-light"></div>
+      <div class="col-lg-4"></div>
     </article>
 
     <article class="row">
-      <div class="col-lg-2 bg-light"></div>
-      <div class="col-lg-8 bg-light">
-        <div id="today" class="card mt-3"></div>
-        <div id="forecast" class="mt-3 p-4" style="display: inline;"></div>
+      <div class="col-lg-12">
+        <div id="today" class="card mt-3 shadow"></div>
+        <h5 class="mt-3">5-Day Forecast:</h5>
+        <div id="forecast" class="mt-3 p-4 d-flex justify-content-center" style="display: inline;"></div>
       </div>
-      <div class="col-lg-2 bg-light"></div>
     </article>
   </section>
 
@@ -64,5 +60,27 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
   <script src="assets/javascript/script.js"></script>
 </body>
+
+<footer class="footer">
+  <div class="container">
+      <span>
+          <a class="btn btn-social-icon btn-github" id="footerIcon" href="https://github.com/wilsoncollin7" target="_blank">
+              <span class="fa fa-github"></span>
+          </a>
+          <a class="btn btn-social-icon btn-facebook" id="footerIcon" href="https://www.facebook.com/collin.wilson.167/" target="_blank">
+              <span class="fa fa-facebook"></span>
+          </a>
+          <a class="btn btn-social-icon btn-instagram" id="footerIcon" href="https://www.instagram.com/callingmewilson/" target="_blank">
+              <span class="fa fa-instagram"></span>
+          </a>
+          <a class="btn btn-social-icon btn-linkedin" id="footerIcon" href="https://www.linkedin.com/in/collin-wilson-a512351a8/" target="_blank">
+              <span class="fa fa-linkedin"></span>
+          </a>
+          <a class="btn btn-social-icon btn-youtube" id="footerIcon" href="https://www.youtube.com/channel/UCxEPolHlcRK6zDetwazkm9w?view_as=subscriber" target="_blank">
+              <span class="fa fa-youtube"></span>
+          </a>
+      </span>
+  </div>
+</footer>
 
 </html>

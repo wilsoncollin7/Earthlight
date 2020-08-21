@@ -14,11 +14,6 @@ $(document).ready(function() {
     searchWeather($(this).text());
   });
 
-  $("#clearHistory").on("click", function() {
-    localStorage.clear("weatherHistory")
-    $(".history").html()
-  });
-
   function makeRow(text) {
     var a = $("<a>").addClass("dropdown-item").attr("href", "#").text(text);
     $(".history").prepend(a);
@@ -73,8 +68,8 @@ $(document).ready(function() {
       success: function(data) {
         // overwrite any existing content with title and empty row
         $("#forecast").html("")
-        var header = $("<h2>").text("5-Day Forecast:")
-        $("#forecast").append(header)
+        // var header = $("<h2>").text("5-Day Forecast:")
+        // $("#forecast").append(header)
         var time = 0
         // loop over all forecasts (by 3-hour increments)
         for (var i = 0; i < data.list.length; i++) {
@@ -85,7 +80,7 @@ $(document).ready(function() {
             time ++
             var icon = data.list[i].weather[0].icon
             var img = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
-            var day = $("<div>").addClass("card forecard bg-primary mr-4 p-2").attr("style", "width:8rem; float:left; color:white;")
+            var day = $("<div>").addClass("card forecard mr-4 p-2 shadow").attr("style", "width:8rem; float:left; color:white;")
             var date = $("<h5>").text(moment().add(time, 'days').calendar("M, D, YYYY"))
             var temp = $("<h5>"). text(((data.list[i].main.temp) * 1.8 - 459.67).toFixed(2) + " F");
             var humid = $("<h5>").text(data.list[i].main.humidity + "%");

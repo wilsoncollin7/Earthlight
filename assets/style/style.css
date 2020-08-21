@@ -1,10 +1,43 @@
+body {
+    background-color: #FEFAE0;
+}
+
+#navbar, #search-button, #dropdownMenuButton, #today, #footerIcon {
+    color: white;
+}
+
+#navbar {
+    background-color: #283618;
+}
+
+#search-button {
+    background-color: #606C38;
+}
+
+#dropdownMenuButton {
+    background-color: #BC6C25;
+    border: 1px solid #BC6C25;
+}
+
 #mainContainer {
     text-align: center;
 }
 
-#dropdownMenuButton {
+#today {
+    background-color: #606C38;
 }
 
-#form {
-   
+.forecard {
+    background-color: #BC6C25;
+}
+
+.footer {
+    color: white;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #283618;
 }
