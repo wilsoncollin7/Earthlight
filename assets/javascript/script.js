@@ -2,6 +2,7 @@ $(document).ready(function() {
   var apiKey = "&appid=51d8d29d59553ece714298da2f3009a6"
 
   $("#search-button").on("click", function() {
+    event.preventDefault();
     var searchValue = $("#search-value").val();
 
     // clear input box
@@ -39,7 +40,7 @@ $(document).ready(function() {
         // create html content for current weather
         var icon = data.weather[0].icon
         var img = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
-        var cityName = $("<h2>").text(data.name + " " + "(" + moment().calendar("M, D, YYYY") + ")" + " ")
+        var cityName = $("<h2>").text(data.name + " " + "(" + moment().format('l') + ")" + " ")
         cityName.append(img)
         var temp = $("<h5>").text("Temperature: " + (data.main.temp * 1.8 - 459.67).toFixed(2) + " F")
         var humid = $("<h5>").text("Humidity: " + data.main.humidity + "%")
@@ -81,7 +82,7 @@ $(document).ready(function() {
             var icon = data.list[i].weather[0].icon
             var img = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
             var day = $("<div>").addClass("card forecard mr-4 p-2 shadow").attr("style", "width:8rem; float:left; color:white;")
-            var date = $("<h5>").text(moment().add(time, 'days').calendar("M, D, YYYY"))
+            var date = $("<h5>").text(moment().add(time, 'days').format('l'))
             var temp = $("<h5>"). text(((data.list[i].main.temp) * 1.8 - 459.67).toFixed(2) + " F");
             var humid = $("<h5>").text(data.list[i].main.humidity + "%");
             
@@ -110,9 +111,9 @@ $(document).ready(function() {
         $(".today").append(uv.append(btn));
 
         if (data.value > 7) {
-          $(".btn-sm").addClass("btn-danger")
+          $(".btn-sm").addClass("hot")
         } else{
-          $(".btn-sm").addClass("btn-primary")
+          $(".btn-sm").addClass("cold")
         }
       }
     });

@@ -1,34 +1,35 @@
 body {
     background-color: #FEFAE0;
+    font-family: 'Quicksand', sans-serif;
 }
 
-#navbar, #search-button, #dropdownMenuButton, #today, #footerIcon {
+#navbar, #search-button, #dropdownMenuButton, #today, #footerIcon, .hot, .cold {
     color: white;
 }
 
-#navbar {
+#navbar, .footer {
     background-color: #283618;
 }
 
-#search-button {
+#search-button, #today {
     background-color: #606C38;
-}
-
-#dropdownMenuButton {
-    background-color: #BC6C25;
-    border: 1px solid #BC6C25;
 }
 
 #mainContainer {
     text-align: center;
 }
 
-#today {
-    background-color: #606C38;
+.hot {
+    background-color: red;
 }
 
-.forecard {
+.cold {
+    background-color: #1184e8;
+}
+
+.forecard, #dropdownMenuButton {
     background-color: #BC6C25;
+    border: 1px solid #BC6C25;
 }
 
 .footer {
@@ -39,5 +40,4 @@ body {
     width: 100%;
     height: 60px;
     line-height: 60px;
-    background-color: #283618;
 }
