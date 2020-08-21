@@ -10,13 +10,18 @@ $(document).ready(function() {
     searchWeather(searchValue);
   });
 
-  $(".history").on("click", "li", function() {
+  $(".history").on("click", "a", function() {
     searchWeather($(this).text());
   });
 
+  $("#clearHistory").on("click", function() {
+    localStorage.clear("weatherHistory")
+    $(".history").html()
+  });
+
   function makeRow(text) {
-    var li = $("<li>").addClass("list-group-item list-group-item-action").text(text);
-    $(".history").append(li);
+    var a = $("<a>").addClass("dropdown-item").attr("href", "#").text(text);
+    $(".history").prepend(a);
   }
 
   function searchWeather(searchValue) {
@@ -28,7 +33,7 @@ $(document).ready(function() {
         // create history link for this search
         if (history.indexOf(searchValue) === -1) {
           history.push(searchValue);
-          window.localStorage.setItem("history", JSON.stringify(history));
+          window.localStorage.setItem("weatherHistory", JSON.stringify(history));
     
           makeRow(searchValue);
         }
@@ -119,7 +124,7 @@ $(document).ready(function() {
   }
 
   // get current history, if any
-  var history = JSON.parse(window.localStorage.getItem("history")) || [];
+  var history = JSON.parse(window.localStorage.getItem("weatherHistory")) || [];
 
   if (history.length > 0) {
     searchWeather(history[history.length-1]);
