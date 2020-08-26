@@ -20,6 +20,10 @@ $(document).ready(function() {
     $(".history").prepend(a);
   }
 
+  var today = new Date();  
+  var day = today.getDay(); 
+  const daylist = ["Sunday","Monday","Tuesday","Wednesday ","Thursday","Friday","Saturday"];
+
   function searchWeather(searchValue) {
     $.ajax({
       type: "GET",
@@ -40,15 +44,16 @@ $(document).ready(function() {
         // create html content for current weather
         var icon = data.weather[0].icon
         var img = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
-        var cityName = $("<h2>").text(data.name + " " + "(" + moment().format('l') + ")" + " ")
-        cityName.append(img)
-        var temp = $("<h5>").text("Temperature: " + (data.main.temp * 1.8 - 459.67).toFixed(2) + " F")
+        var cityName = $("<h2>").text(data.name + " ");
+        var todayDay = $("<h2>").text(daylist[day]);
+        // cityName.append(img)
+        var temp = $("<h5>").text("Temperature: " + (data.main.temp * 1.8 - 459.67).toFixed() + " F")
         var humid = $("<h5>").text("Humidity: " + data.main.humidity + "%")
         var windSpeed = $("<h5>").text("Wind Speed: " + data.wind.speed + " MPH")
 
         var carBody = $("<div>").addClass("card-body today")
 
-        carBody.append(cityName, temp, humid, windSpeed)
+        carBody.append(cityName, todayDay, img, temp, humid, windSpeed)
 
         $("#today").append(carBody)
 
@@ -69,24 +74,27 @@ $(document).ready(function() {
       success: function(data) {
         // overwrite any existing content with title and empty row
         $("#forecast").html("")
-        // var header = $("<h2>").text("5-Day Forecast:")
-        // $("#forecast").append(header)
         var time = 0
+        var foreDay = today.getDay();
         // loop over all forecasts (by 3-hour increments)
         for (var i = 0; i < data.list.length; i++) {
           // only look at forecasts around 3:00pm
-          
           if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
             // create html elements for a bootstrap card
+            foreDay++
             time ++
+            if(foreDay === daylist.length) {
+              foreDay = 0
+            }
             var icon = data.list[i].weather[0].icon
             var img = $("<img>").addClass("weatherIcon").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
             var day = $("<div>").addClass("card forecard mr-4 p-2 shadow")
+            var dayName = $("<h5>").text(daylist[foreDay])
             var date = $("<h5>").text(moment().add(time, 'days').format('l'))
-            var temp = $("<h5>"). text(((data.list[i].main.temp) * 1.8 - 459.67).toFixed(2) + " F");
+            var temp = $("<h5>"). text(((data.list[i].main.temp) * 1.8 - 459.67).toFixed() + " F");
             var humid = $("<h5>").text(data.list[i].main.humidity + "%");
             
-            day.append(date, img, temp, humid);
+            day.append(dayName, date, img, temp, humid);
 
             $("#forecast").append(day)
             
