@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  var apiKey = "&appid=51d8d29d59553ece714298da2f3009a6"
+  const apiKey = "&appid=51d8d29d59553ece714298da2f3009a6"
+  const googleApiKey = "AIzaSyDwjr75wpVbrqdqfwE_Gb41DcE3T8s04wM"
 
   $("#search-button").on("click", function() {
     event.preventDefault();
@@ -41,6 +42,14 @@ $(document).ready(function() {
         // clear any old content
         $("#today").html("")
 
+        let map;
+
+        const script = $("<script>").attr("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyDwjr75wpVbrqdqfwE_Gb41DcE3T8s04wM&callback=initMap&libraries=&v=weekly");
+        // script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDwjr75wpVbrqdqfwE_Gb41DcE3T8s04wM&callback=initMap&libraries=&v=weekly';
+        script.defer = true;
+      
+        $("#head").append(script);
+
         // create html content for current weather
         var icon = data.weather[0].icon
         var img = $("<img>").attr("src", "http://openweathermap.org/img/wn/" + icon + "@2x.png")
@@ -62,6 +71,12 @@ $(document).ready(function() {
         // call follow-up api endpoints
         getForecast(searchValue);
         getUVIndex(data.coord.lat, data.coord.lon);
+        window.initMap = function() {
+          map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: data.coord.lat, lng: data.coord.lon },
+            zoom: 10
+          });
+        };
       }
     });
   }

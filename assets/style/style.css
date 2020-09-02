@@ -28,6 +28,10 @@ body {
     background-color: #1184e8;
 }
 
+#map {
+    height: 512px;
+}
+
 .forecard, #dropdownMenuButton {
     background-color: #BC6C25;
     border: 1px solid #BC6C25;
