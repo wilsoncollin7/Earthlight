@@ -30,6 +30,7 @@ body {
 
 #map {
     height: 512px;
+    border: 2px solid #606C38;
 }
 
 .forecard, #dropdownMenuButton {
@@ -40,7 +41,8 @@ body {
 #forecast {
     display: flex;
     flex-direction: row;
-    justify-content: center
+    justify-content: center;
+    margin-bottom: 40px;
 }
 
 .forecard {
