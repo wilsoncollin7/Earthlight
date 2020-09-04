@@ -78,12 +78,13 @@ $(document).ready(function() {
       map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: lat, lng: lon },
         zoom: 8,
-        mapId: 'e9ec3bf73070e70b'
+        mapId: 'e9ec3bf73070e70b',
+        mapTypeId: google.maps.MapTypeId.TERRAIN
       });
   
       myMapType = new google.maps.ImageMapType({
         getTileUrl: function(coord, zoom) {
-          return "https://tile.openweathermap.org/map/precipitation_new/" + zoom + "/" + coord.x + "/" + coord.y + ".png?appid=51d8d29d59553ece714298da2f3009a6";
+          return "https://tile.openweathermap.org/map/precipitation/" + zoom + "/" + coord.x + "/" + coord.y + ".png?appid=51d8d29d59553ece714298da2f3009a6";
         },
         tileSize: new google.maps.Size(256, 256),
         maxZoom: 9,
