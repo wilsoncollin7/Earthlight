@@ -5,7 +5,7 @@
 
 <img src="assets/dev-docs/homePage.JPG">
 
-Here is a link to the application: https://wilsoncollin7.github.io/weather-dashboard/
+Here is a link to the application: https://wilsoncollin7.github.io/Earthlight/
 
   ## Table of Contents
 
