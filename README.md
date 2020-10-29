@@ -10,8 +10,6 @@
     <img src="assets/dev-docs/earth.JPG" width="600">
   </p>
 
-
-
   ## Table of Contents
 
   - [Installation](#installation)
