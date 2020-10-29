@@ -3,9 +3,14 @@
 
   Here is a weather app that lets the user search by cities. Once the user enters a city the weather information if pulled from the Open Weather Map API. That information is displayed using JavaScript and jQuery. The searched cities are also saved in the local storage of the browser and the user can jump back to those cities in the history section.
 
-<img src="assets/dev-docs/homePage.JPG">
+  Here is a link to the application: https://wilsoncollin7.github.io/weather-dashboard/
 
-Here is a link to the application: https://wilsoncollin7.github.io/weather-dashboard/
+  <p align="center">
+    <img src="assets/dev-docs/homePage.JPG" width="800">
+    <img src="assets/dev-docs/earth.JPG" width="600">
+  </p>
+
+
 
   ## Table of Contents
 
